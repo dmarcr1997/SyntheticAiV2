@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <h1>SyntheticAiV2</h1>
       <Router>
-        <NavBar links ={['login', 'signup', 'home', 'AI']} />
+        <NavBar links ={['login', 'signup']} />
         <Route path = "/login" exact component={Login} />
         <Route path ="/signup" exact component={Signup} />
         <Route path ="/home" exact component={UserPage} />
