@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 
 class Login extends Component{
+    componentDidMount(){
+        this.props.linkGen(['home', 'signup'])
+    }
     render(){
+       
         return(
-            <div>Login</div>
+            <div>
+                <h1>Login</h1>
+            </div>
         )
     }
 }

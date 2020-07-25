@@ -1,4 +1,4 @@
-export const Reducer = (
+const Reducer = (
     state = {
         user: ''
     },
@@ -19,3 +19,5 @@ export const Reducer = (
 
     }
 }
+
+export default Reducer 
