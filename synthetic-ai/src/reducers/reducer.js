@@ -1,6 +1,12 @@
 const Reducer = (
     state = {
-        user: ''
+        user: '',
+        AIdata: {
+            p: '',
+            sug: '',
+            sent: '',
+            regcog: ''
+        }
     },
     action
 ) => {

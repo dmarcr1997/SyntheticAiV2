@@ -7,14 +7,14 @@ const NavBar = (props) =>{
         return word.charAt(0).toUpperCase() + word.slice(1);
     }; 
     const linkStyle = {
-        width: '100px',
-        padding: '12px',
+        width: '50px',
+        padding: '6px',
         margin: '0 6px 6px',
-        background: 'blue',
+        background: 'darkgreen',
         textDecoration: 'none',
         color: 'white',
-        border: 'solid blue',
-        borderRadius: '10px'
+        border: 'solid darkgreen',
+        borderRadius: '12px'
     };
 
     return(
