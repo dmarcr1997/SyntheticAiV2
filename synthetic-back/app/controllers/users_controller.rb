@@ -4,7 +4,8 @@ class UsersController < ApplicationController
         render json: UserSerializer.new(user)
     end
 
-    def new
+    def create
+        puts "HERENOW"
         user = User.create(user_params)
         if user.save
             render json: UserSerializer.new(user)
