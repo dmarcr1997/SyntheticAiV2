@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
     def show
-        user = User.find_by(id: params[:id])
+        user = User.find_by(username: user_params[:username])
+        binding.pry
         render json: UserSerializer.new(user)
     end
 
-    def create
+    def new
         puts "HERENOW"
         user = User.create(user_params)
+        binding.pry
         if user.save
             render json: UserSerializer.new(user)
         end
@@ -28,6 +30,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(users).permit(:username, :password)
+        params.require(:users).permit(:username, :password)
     end
 end

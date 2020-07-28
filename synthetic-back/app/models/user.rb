@@ -1,6 +1,10 @@
 class User < ApplicationRecord
-    has_one :predict_ais
-    has_one :recognize_ais
-    has_one :sentament_ais
-    has_one :suggest_ais
+    has_one :predict_ai
+    has_one :recognize_ai
+    has_one :sentament_ai
+    has_one :suggest_ai
+
+    def password=(pass)
+        self.password_digest = pass
+    end
 end

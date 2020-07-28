@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import signup from '../actions/userActions';
+import { signup } from '../actions/userActions';
 class Signup extends Component{
     state = {
         username: '',
@@ -40,7 +40,7 @@ class Signup extends Component{
 
 const mapDispatchToProps = dispatch => {
     return{
-        newUser: data => signup(data) 
+        newUser: data => dispatch(signup(data)) 
     }
 }
 export default connect( '', mapDispatchToProps)(Signup)
