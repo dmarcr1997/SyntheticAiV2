@@ -1,14 +1,12 @@
 class UsersController < ApplicationController
     def show
         user = User.find_by(username: user_params[:username])
-        binding.pry
         render json: UserSerializer.new(user)
     end
 
     def new
         puts "HERENOW"
         user = User.create(user_params)
-        binding.pry
         if user.save
             render json: UserSerializer.new(user)
         end

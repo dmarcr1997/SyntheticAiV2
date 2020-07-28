@@ -27,10 +27,7 @@ export const login = (inputs) => {
             body: JSON.stringify(userData)
         })
         .then(resp => resp.json())
-        .then(data => {
-            debugger 
-            return dispatch({type: 'LOGIN', user: data})
-        })
+        .then(data => dispatch({type: 'LOGIN', user: data}))
         .catch(error => alert(error.message))
     }
 } 

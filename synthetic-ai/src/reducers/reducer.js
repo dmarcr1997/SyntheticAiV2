@@ -12,14 +12,28 @@ const Reducer = (
 ) => {
     switch(action.type){
         case 'LOGIN':
-            debugger
-            break
+            state = {
+                ...state,
+                user: action.user.data.attributes.username,
+            }
+            return state
         case 'SIGNUP':
-            debugger
-            break
+            state = {
+                ...state,
+                user: action.user.data.attributes.username,
+            }
+            return state
         case 'LOGOUT':
-            debugger
-            break
+            state = {
+                user: '',
+                AIdata: {
+                    p: '',
+                    sug: '',
+                    sent: '',
+                    regcog: ''
+                }
+            }
+            return state
         default:
             
 
