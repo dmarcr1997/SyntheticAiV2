@@ -1,8 +1,11 @@
+import rawData from './rawData';
 const Reducer = (
     state = {
         user: '',
         AIdata: {
-            p: '',
+            p: {
+                data: getData()
+            },
             sug: '',
             sent: '',
             regcog: ''
@@ -38,6 +41,28 @@ const Reducer = (
             
 
     }
+}
+
+let scaleUp = (step) => {
+    return {
+        open: step.open / 138,
+        high: step.close / 138,
+        low: step.low / 138,
+        close: step.close / 138
+    }
+}
+
+let scaleDown = (step) => {
+    return {
+        open: step.open * 138,
+        high: step.close * 138,
+        low: step.low * 138,
+        close: step.close * 138
+    }
+}
+
+let getData = user => {
+    return rawData.map(scaleDown)
 }
 
 export default Reducer 
