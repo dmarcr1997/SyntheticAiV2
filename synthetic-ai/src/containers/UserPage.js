@@ -5,7 +5,7 @@ class UserPage extends Component{
     render(){
         return(
             <div>
-                <h2>{this.props.user}'s AIs<button onClick={() => this.props.logout()}>Logout</button></h2>
+                <h2>AIs<button onClick={() => this.props.logout()}>Logout</button></h2>
                 <AIs/>
             </div>
         )

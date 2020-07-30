@@ -32,9 +32,9 @@ class AIs extends Component{
                 <h4>AI</h4>
                 {this.renderAI(this.state.ai)}
                 <button onClick={() => this.changeAi('Recognize')}>Recognize</button>
-                <button onClick={() => this.changeAi('Sentament')}>Recognize</button>
-                <button onClick={() => this.changeAi('Suggest')}>Recognize</button>
-                <button onClick={() => this.changeAi('Predict')}>Recognize</button>
+                <button onClick={() => this.changeAi('Sentament')}>Sentament</button>
+                <button onClick={() => this.changeAi('Suggest')}>Suggest</button>
+                <button onClick={() => this.changeAi('Predict')}>Predict</button>
                 
             </div>
         )

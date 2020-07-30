@@ -1,4 +1,5 @@
 import rawData from './rawData';
+import {getZero, getOne, getTwo, getThree, getFour, getFive, getSix, getSeven, getEight, getNine} from './numData.js';
 const Reducer = (
     state = {
         user: '',
@@ -8,26 +9,27 @@ const Reducer = (
             },
             sug: '',
             sent: '',
-            regcog: ''
+            regcog: {
+              numbers: getNumData()
+            }
         }
     },
     action
 ) => {
     switch(action.type){
         case 'LOGIN':
-            state = {
+            return {
                 ...state,
                 user: action.user.data.attributes.username,
             }
-            return state
         case 'SIGNUP':
-            state = {
+            return {
                 ...state,
                 user: action.user.data.attributes.username,
             }
             return state
         case 'LOGOUT':
-            state = {
+            return {
                 user: '',
                 AIdata: {
                     p: '',
@@ -36,7 +38,6 @@ const Reducer = (
                     regcog: ''
                 }
             }
-            return state
         default:
             
 
@@ -63,6 +64,22 @@ let scaleDown = (step) => {
 
 let getData = user => {
     return rawData.map(scaleDown)
+}
+
+let getNumData = () => {
+    let nums = [
+        { "input": getZero, "output": { "zero": 1 } },
+        { "input": getOne, "output": { "one": 1 } },
+        { "input": getTwo, "output": { "two": 1 } },
+        { "input": getThree, "output": { "three": 1 } },
+        { "input": getFour, "output": { "four": 1 } },
+        { "input": getFive, "output": { "five": 1 } },
+        { "input": getSix, "output": { "six": 1 } },
+        { "input": getSeven, "output": { "seven": 1 } },
+        { "input": getEight, "output": { "eight": 1 } },
+        { "input": getNine, "output": { "nine": 1 } },
+    ]
+    return nums
 }
 
 export default Reducer 
