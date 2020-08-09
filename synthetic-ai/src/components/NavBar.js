@@ -2,6 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+
 const NavBar = (props) =>{
     function capitalize(word){
         return word.charAt(0).toUpperCase() + word.slice(1);
@@ -19,7 +20,7 @@ const NavBar = (props) =>{
 
     return(
         <div>
-            {props.links.map(link => <NavLink to={`${link}`} exact style={linkStyle}>{capitalize(link)}</NavLink>)}
+            {props.links.map(link => <NavLink key={Math.random()} to={`${link}`} exact style={linkStyle}>{capitalize(link)}</NavLink>)}
         </div>
     )
 }
