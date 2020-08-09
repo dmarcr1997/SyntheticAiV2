@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import brain from 'brain.js';
-
+import Data from '../Data.js'
 class SuggestAI extends Component {
     state = {
         net: new brain.NeuralNetwork(),
@@ -12,8 +12,10 @@ class SuggestAI extends Component {
 
     saveData = (event) => {
         event.preventDefault()
+        event.target.getElementsByClassName('box')[0].checked=false
+        event.target.getElementsByClassName('box')[1].checked=false
         let {data, newProp, value} = this.state
-        
+        debugger
         data.push({input: { [`${newProp}`]: 1 }, output:[value]})
         this.setState({
             data: data,
@@ -43,26 +45,18 @@ class SuggestAI extends Component {
         let {inquery, net} = this.state
         if (inquery !== ''){
         
-            alert(net.run(inquery))
+            alert(net.run(inquery) < 0.5 ? `You Dont Like This score: ${net.run(inquery)}`: `You like this score: ${net.run(inquery)}`)
             this.setState({
                 inquery: ''
             })
         }
     }
 
-    renderData = () => {
-        let {data} = this.state
-        if (data.length === 0){
-            return 'No Data Yet\nAdd Some Above'
-        }
-        return(
-            <p>
-                {data.map(d => {
-                    debugger
-                    return(<p key={Date.now()}>Input: {d.input}, Output: {d.output === 0 ? 'Dislike': "Like"}</p>) //fix issue here
-                })}
-            </p>
-        )
+    showData = () => {
+        let datStr = this.state.data.map(d => {
+            return `Input: ${JSON.stringify(d.input)}, Output: ${d.output[0] === "0" ? 'Dislike': "Like"}\n`
+        })
+        alert(datStr)
     }
 
     render(){
@@ -71,17 +65,17 @@ class SuggestAI extends Component {
                 <h5>SuggestAI</h5>
                 <form onSubmit={this.saveData} >
                     <input type='text' name='newProp' onChange={this.handleChange} value={this.state.newProp} />
-                    <select onChange={this.handleChange} name='value'>
-                        <option value={0} >Dislike</option>
-                        <option value={1} >Like</option>
-                    </select>
+                    <p>
+                        Dislike<input className='box' type='checkbox' onClick={this.handleChange} name='value' value={0}/><br/>
+                        Like<input className='box' type='checkbox' onClick={this.handleChange} name='value' value={1}/>
+                    </p>
                     <input type='submit'/>
-                    <p>Once You Have Entered Data:
-                    <button onClick={this.learn}>Train</button></p>
-                    <input type='text' name='inquery' value={this.state.inquery} onChange={this.handleChange}/>
-                    <button onClick={this.suggest}>Do I Like This?</button>
                 </form>
-                {this.renderData()}
+                <p>Once You Have Entered Data:
+                <button onClick={this.learn}>Train</button></p>
+                <input type='text' name='inquery' value={this.state.inquery} onChange={this.handleChange}/>
+                <button onClick={this.suggest}>Do I Like This?</button>
+                <button onClick={() => this.showData()}>Data</button>
             </div>
         )
     }
