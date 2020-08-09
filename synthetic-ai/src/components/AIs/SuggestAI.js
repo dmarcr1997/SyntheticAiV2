@@ -18,7 +18,6 @@ class SuggestAI extends Component {
             newProp: '',
             value: 0 
         })
-        debugger
     }
 
     handleChange = (event) => {
@@ -26,6 +25,16 @@ class SuggestAI extends Component {
             [`${event.target.name}`]: event.target.value
         })
         console.log(this.state)
+    }
+
+    learn = () => {
+        let {data, net} = this.state
+        if (data.length === 0){
+            alert('No Data entered Yet')
+        } else {
+            net.train(data)
+            console.log('Trained')
+        }
     }
 
     render(){
@@ -39,6 +48,8 @@ class SuggestAI extends Component {
                         <option value={1} >Like</option>
                     </select>
                     <input type='submit'/>
+                    <p>Once You Have Entered Data:
+                    <button onClick={this.learn}>Train</button></p>
                 </form>
             </div>
         )
