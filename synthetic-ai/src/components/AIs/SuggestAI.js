@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import brain from 'brain.js';
 import Data from '../Data.js'
+import { Button, Input, Text, Checkbox, CheckboxGroup } from "@chakra-ui/core";
 class SuggestAI extends Component {
     state = {
         net: new brain.NeuralNetwork(),
@@ -62,20 +63,20 @@ class SuggestAI extends Component {
     render(){
         return(
             <div>
-                <h5>SuggestAI</h5>
+                <Text fontSize='4xl'>SuggestAI</Text>
                 <form onSubmit={this.saveData} >
-                    <input type='text' name='newProp' onChange={this.handleChange} value={this.state.newProp} />
-                    <p>
-                        Dislike<input className='box' type='checkbox' onClick={this.handleChange} name='value' value={0}/><br/>
-                        Like<input className='box' type='checkbox' onClick={this.handleChange} name='value' value={1}/>
-                    </p>
-                    <input type='submit'/>
+                    <Input type='text' name='newProp' onChange={this.handleChange} value={this.state.newProp} />
+                    <Text fontSize='lg'>
+                        <Checkbox className='box' type='checkbox' onClick={this.handleChange} name='value' value={0}>Dislike</Checkbox>
+                        <Checkbox className='box' type='checkbox' onClick={this.handleChange} name='value' value={1}>Like</Checkbox>
+                    </Text>
+                    <Button><input type='submit'/></Button>
                 </form>
-                <p>Once You Have Entered Data:
-                <button onClick={this.learn}>Train</button></p>
-                <input type='text' name='inquery' value={this.state.inquery} onChange={this.handleChange}/>
-                <button onClick={this.suggest}>Do I Like This?</button>
-                <button onClick={() => this.showData()}>Data</button>
+                <Text fontSize='4xl'>Once You Have Entered Data:
+                <Button onClick={this.learn}>Train</Button></Text>
+                <Input type='text' name='inquery' value={this.state.inquery} onChange={this.handleChange}/>
+                <Button onClick={this.suggest}>Do I Like This?</Button>
+                <Button onClick={() => this.showData()}>Data</Button>
             </div>
         )
     }

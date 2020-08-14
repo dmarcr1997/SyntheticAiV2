@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Input, Text } from "@chakra-ui/core";
 import brain from 'brain.js';
 class SentamentAI extends Component{
     state = {
@@ -34,7 +35,7 @@ class SentamentAI extends Component{
     }
     trainAi = () => {
         let {net, trainingData} = this.state
-        debugger
+        
         net.train(trainingData, {
             iterations: 200,
             errorThresh: 0.005,
@@ -44,15 +45,15 @@ class SentamentAI extends Component{
     render(){
         return(
             <div>
-                <h5>SentamentAI</h5>
-                <button onClick={() => this.trainAi()}>Train</button>
-                <h6>How it feels</h6>
-                <p>{this.state.output}</p>
+                <Text fontSize="4xl">SentamentAI</Text>
+                <Button onClick={() => this.trainAi()}>Train</Button>
+                <Text fontSize="lg">How it feels</Text>
+                <Text fontSize="lg">{this.state.output}</Text>
                 <br/>
-                <h6>Enter a new Sentence to Test</h6>
+                <Text fontSize="3xl">Enter a new Sentence to Test</Text>
                 <form onSubmit={this.outPut}>
-                    <input type='text' onChange={this.changeIn} value={this.state.input}/>
-                    <input type='submit'/>
+                    <Input type='text' onChange={this.changeIn} value={this.state.input}/>
+                    <Button><input type='submit'/></Button>
                 </form>
             </div>
         )

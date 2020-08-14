@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import AIs from './AIs';
 import { connect } from 'react-redux';
+import { Button, Text } from "@chakra-ui/core";
 class UserPage extends Component{
     render(){
         return(
             <div>
-                <h2>AIs<button onClick={() => this.props.logout()}>Logout</button></h2>
+                <Text fontSize='5xl'>AIs<Button onClick={() => this.props.logout()}>Logout</Button></Text>
                 <AIs/>
             </div>
         )

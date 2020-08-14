@@ -3,6 +3,7 @@ import PredictAI from '../components/AIs/PredictAI';
 import RecognizeAI from '../components/AIs/RecognizeAI';
 import SentamentAI from '../components/AIs/SentamentAI';
 import SuggestAI from '../components/AIs/SuggestAI';
+import { Button, Text } from "@chakra-ui/core";
 class AIs extends Component{
     state ={
         ai: "Predict"
@@ -29,12 +30,12 @@ class AIs extends Component{
     render(){
         return(
             <div>
-                <h4>AI</h4>
+                <Text fontSize="5xl">AI</Text>
                 {this.renderAI(this.state.ai)}
-                <button onClick={() => this.changeAi('Recognize')}>Recognize</button>
-                <button onClick={() => this.changeAi('Sentament')}>Sentament</button>
-                <button onClick={() => this.changeAi('Suggest')}>Suggest</button>
-                <button onClick={() => this.changeAi('Predict')}>Predict</button>
+                <Button onClick={() => this.changeAi('Recognize')}>Recognize</Button>
+                <Button onClick={() => this.changeAi('Sentament')}>Sentament</Button>
+                <Button onClick={() => this.changeAi('Suggest')}>Suggest</Button>
+                <Button onClick={() => this.changeAi('Predict')}>Predict</Button>
                 
             </div>
         )

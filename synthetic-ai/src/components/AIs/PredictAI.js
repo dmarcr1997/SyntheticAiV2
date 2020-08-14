@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Button, Text } from "@chakra-ui/core";
 import brain from 'brain.js';
 class PredictAI extends Component{
     state = {
@@ -27,8 +28,8 @@ class PredictAI extends Component{
 
         return(
             <div>
-                <h5>PredictAI</h5>
-                <button onClick={async () => {
+                <Text fontSize='4xl'>PredictAI</Text>
+                <Button onClick={async () => {
                         await this.state.net.train(this.state.trainingData, {
                             learningRate: 0.005,
                             errorThresh: 0.02
@@ -36,10 +37,10 @@ class PredictAI extends Component{
                         alert('Done')
                     }
                 }
-                >Train</button>
-                <button onClick={() => 
+                >Train</Button>
+                <Button onClick={() => 
                     alert(JSON.stringify(this.state.net.run(this.state.trainingData[0])))
-                }>Run</button>
+                }>Run</Button>
             </div>
         )
     }

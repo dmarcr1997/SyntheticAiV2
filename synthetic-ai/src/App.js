@@ -6,7 +6,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import AIs from './containers/AIs';
 import UserPage from './containers/UserPage';
-import Admin from './Adm/Admin';
+import { ThemeProvider, CSSReset, Text } from '@chakra-ui/core'
 class App extends Component{
   state = {
      links: ['login', 'signup']
@@ -18,16 +18,20 @@ class App extends Component{
   }
   render(){
     return (
-      <div className="App">
-        <h1>SyntheticAiV2</h1>
-        <Router>
-          <NavBar links ={this.state.links} />
-          <Route path = "/login" exact render={ props => <Login {...props} linkGen={this.changeLinks}/> } />
-          <Route path ="/signup" exact render={ props => <Signup {...props} linkGen={this.changeLinks}/> } />
-          <Route path ="/home" exact render={ props => <UserPage {...props} linkGen={this.changeLinks}/>} />
-          <Route path ="/AI" exact render={props => <AIs {...props} linkGen={this.changeLinks}/>} /> 
-        </Router>
-      </div>
+      <ThemeProvider>
+        
+        <CSSReset />
+        <div className="App">
+          <Text fontSize='6xl'>SyntheticAiV2</Text>
+          <Router>
+            <NavBar links ={this.state.links} />
+            <Route path = "/login" exact render={ props => <Login {...props} linkGen={this.changeLinks}/> } />
+            <Route path ="/signup" exact render={ props => <Signup {...props} linkGen={this.changeLinks}/> } />
+            <Route path ="/home" exact render={ props => <UserPage {...props} linkGen={this.changeLinks}/>} />
+            <Route path ="/AI" exact render={props => <AIs {...props} linkGen={this.changeLinks}/>} /> 
+          </Router>
+        </div>
+      </ThemeProvider>
     );
   }
 }

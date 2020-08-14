@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Input, Button } from "@chakra-ui/core";
 import { connect } from 'react-redux';
 import { login } from '../actions/userActions';
 
@@ -31,10 +32,10 @@ class Login extends Component{
                 <h2>Login</h2>
                 <form onSubmit={this.handleSubmit}>
                     <label name='usermane'>Username</label>
-                    <input type='text' name='username' onChange={this.handleChange} value={this.state.username}/>
+                    <Input size="md" type='text' name='username' onChange={this.handleChange} value={this.state.username}/>
                     <label name='password'>Password</label>
-                    <input type='password' name='password' onChange={this.handleChange} value={this.state.password}/>
-                    <input type='submit'/>
+                    <Input size="md" type='password' name='password' onChange={this.handleChange} value={this.state.password}/>
+                    <Button><input type='submit'/></Button>
                 </form>
             </div>
         )
